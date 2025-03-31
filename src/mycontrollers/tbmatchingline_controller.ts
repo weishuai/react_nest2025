@@ -1,0 +1,89 @@
+import {
+  Controller,
+  Get,
+  Post,
+  Put,
+  Body,
+  Param,
+  Query,
+  Headers,
+} from '@nestjs/common';
+import _ from 'lodash';
+import { TbmatchinglineService } from '../myservices/tbmatchingline_service';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { TbmatchinglineSearchVo, TbmatchinglineVo } from '../myvo/tbmatchingline_vo';
+@Controller('/tbmatchingline')
+export class TbmatchinglineController {
+  private tbmatchinglineService = new TbmatchinglineService();
+  @Post('/createTbmatchingline')
+  async createTbmatchingline(@Body() tbmatchinglineVo: TbmatchinglineVo) {
+    ///核心代码
+    //Post
+    ///Body { "id":"3","name":"154363268@qq.com","password":"123456"}
+    ///Body:  { id: '3', name: '154363268@qq.com', password: '123456'}
+    //返回值{"identifiers": [{	"id": "3"	}],"generatedMaps": [	{}],"raw": []}
+    console.log('Body: ', tbmatchinglineVo);
+    return await this.tbmatchinglineService.createTbmatchingline(tbmatchinglineVo);
+  }
+  @Put('/updateTbmatchingline/:Id')
+  async updateaTbmatchingline(
+    @Headers('userToken') userToken: string,
+    @Param('Id') Id: string,
+    @Body() tbmatchinglineVo: TbmatchinglineVo,
+  ) {
+    //请求时主要设置Header:userToken及其值
+    console.log('userToken: ', userToken);
+    console.log('Id: ', Id);
+    console.log('TbmatchinglineVo: ', tbmatchinglineVo);
+    let userId = '';
+    if (userToken != null && userToken != '') {
+      userId = userToken;
+    }
+
+    return await this.tbmatchinglineService.updateaTbmatchingline(
+      Id,
+      userId,
+      tbmatchinglineVo,
+    );
+  }
+  @Get('/removeTbmatchingline/:Id')
+  async removeTbmatchingline(@Param('Id') Id: string) {
+    return await this.tbmatchinglineService.removeTbmatchingline(Id);
+  }
+  @Get('/getTbmatchinglineById/:Id')
+  async getTbmatchinglineById(@Param('Id') Id: string) {
+    return await this.tbmatchinglineService.getTbmatchinglineById(Id);
+  }
+
+  @Get('/getTbmatchingline')
+  async getTbmatchinglineList(@Query() query) {
+    //核心代码测试
+    //tbmatchingline/getTbmatchingline?search=1&pageIndex=0&recordIndex=0&pageSize=50
+    ///query:  { search: '1', pageIndex: '0', recordIndex: '0', pageSize: '50' }
+    console.log('query: ', query);
+    const search = new TbmatchinglineSearchVo();
+    search.search = query.search;
+    search.pageIndex = Number(search.pageIndex != null ? search.pageIndex : 0);
+    search.recordIndex = Number(
+      search.recordIndex != null ? search.recordIndex : 0,
+    );
+    search.pageSize = Number(search.pageSize != null ? search.pageSize : 0);
+
+    console.log('fhok: ', JSON.stringify(search));
+    return await this.tbmatchinglineService.getTbmatchinglineList(search);
+  }
+  @Get('/getTbmatchinglineAll')
+  async getTbmatchinglineAll() {
+    return await this.tbmatchinglineService.getTbmatchinglineAll();
+  }
+  @Get('/getTbmatchinglineAllView')
+  async getTbmatchinglineAllView() {
+    return await this.tbmatchinglineService.getTbmatchinglineAllView();
+  }
+
+  // @Get('/getTbmatchinglineSearch')
+  // async getTbmatchinglineSearch(@Query() search: TbmatchinglineSearchVo) {
+  //   return await this.tbmatchinglineService.getTbmatchinglineSearch(search);
+  // }
+
+}

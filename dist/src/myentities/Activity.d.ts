@@ -1,0 +1,35 @@
+export declare class Activity {
+    id: string;
+    mid: string | null;
+    types: string | null;
+    subject: string | null;
+    starts: Date | null;
+    ends: Date | null;
+    allDayEvent: number | null;
+    attendees1: string | null;
+    attendees2: string | null;
+    relatedType: string | null;
+    relatedTo: string | null;
+    eventType: string | null;
+    location: string | null;
+    description: string | null;
+    collaborate1: string | null;
+    collaborate2: string | null;
+    priority: string | null;
+    status: string | null;
+    attachment: string | null;
+    emailTo: string | null;
+    cc: string | null;
+    sendMine: string | null;
+    contact: string | null;
+    caller: string | null;
+    senderNumber: string | null;
+    receiverNumber: string | null;
+    createdAt: Date | null;
+    updatedAt: Date | null;
+    isactived: string | null;
+    islocked: string | null;
+    createUid: string | null;
+    updatedUid: string | null;
+    mtable: string | null;
+}

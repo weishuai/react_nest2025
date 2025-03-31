@@ -1,0 +1,30 @@
+export declare class Leads {
+    id: string;
+    name: string | null;
+    jobTitle: string | null;
+    company: string | null;
+    industry: string | null;
+    website: string | null;
+    email: string | null;
+    phoneNumber: string | null;
+    mobileNumber: string | null;
+    faxNumber: string | null;
+    remark: string | null;
+    leadOwner: string | null;
+    leadPool: string | null;
+    campaign: string | null;
+    source: string | null;
+    streetRoad: string | null;
+    city: string | null;
+    ctate: string | null;
+    postCode: string | null;
+    country: string | null;
+    createdAt: Date | null;
+    updatedAt: Date | null;
+    isactived: string | null;
+    islocked: string | null;
+    satus: string | null;
+    linkedIn: string | null;
+    createUid: string | null;
+    updatedUid: string | null;
+}

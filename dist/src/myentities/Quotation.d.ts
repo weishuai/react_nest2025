@@ -1,0 +1,33 @@
+export declare class Quotation {
+    id: string;
+    quotationName: string | null;
+    salesPerson: string | null;
+    opportunity: string | null;
+    paymentTerms: string | null;
+    contact: string | null;
+    taxes: string | null;
+    expirationDate: Date | null;
+    currency: string | null;
+    cat: string | null;
+    test2: string | null;
+    additionalField3: string | null;
+    additionalField4: string | null;
+    termsConditions: string | null;
+    remark: string | null;
+    createdAt: Date | null;
+    updatedAt: Date | null;
+    isactived: string | null;
+    islocked: string | null;
+    createUid: string | null;
+    updatedUid: string | null;
+    status: string | null;
+    amount: string | null;
+    percentage: string | null;
+    discount: string | null;
+    totalDiscount: string | null;
+    name: string | null;
+    test1: string | null;
+    clientId: string | null;
+    refNumber: string | null;
+    discountType: string | null;
+}

@@ -1,0 +1,26 @@
+import { SearchVo } from '../myutils/searchvo';
+export class CountryVo {
+  name: string;
+
+  id: string;
+
+  description: string;
+
+  createdAt: Date;
+
+  updatedAt: Date;
+
+  isactived: string;
+
+  islocked: string;
+
+  createUid: string;
+
+  updatedUid: string;
+}
+
+export class CountrySearchVo extends SearchVo {
+  fundType: string;
+
+  status: number;
+}

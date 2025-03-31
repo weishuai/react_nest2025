@@ -1,0 +1,6 @@
+1.讲全部的文件复制到容器里
+COPY --chown=node:node . .
+2. docker pull node:18.2.0 拉取依赖包
+3. docker build -f Dockerfile -t some-mydb .  打包
+4. docker run -p 3009:3009 some-mydb    运行
+5. http://localhost:3000/auth/login     访问

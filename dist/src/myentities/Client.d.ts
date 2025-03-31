@@ -1,0 +1,36 @@
+export declare class Client {
+    id: string;
+    name: string | null;
+    description: string | null;
+    createdAt: Date | null;
+    updatedAt: Date | null;
+    isactived: string | null;
+    islocked: string | null;
+    createUid: string | null;
+    updatedUid: string | null;
+    type: string | null;
+    accountOwner: string | null;
+    regNumber: string | null;
+    industry: string | null;
+    phoneNumber: string | null;
+    website: string | null;
+    faxNumber: string | null;
+    street: string | null;
+    city: string | null;
+    state: string | null;
+    postCode: string | null;
+    country: string | null;
+    don: string | null;
+    ref: string | null;
+    additionalField4: string | null;
+    additionalField5: string | null;
+    gender: string | null;
+    dateBirth: Date | null;
+    language: string | null;
+    income: string | null;
+    marital: string | null;
+    children: string | null;
+    accountsType: string | null;
+    accountTag: string | null;
+    clientState: string | null;
+}

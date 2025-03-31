@@ -1,0 +1,89 @@
+import {
+  Controller,
+  Get,
+  Post,
+  Put,
+  Body,
+  Param,
+  Query,
+  Headers,
+} from '@nestjs/common';
+import _ from 'lodash';
+import { FhinspectionService } from '../myservices/fhinspection_service';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { FhinspectionSearchVo, FhinspectionVo } from '../myvo/fhinspection_vo';
+@Controller('/fhinspection')
+export class FhinspectionController {
+  private fhinspectionService = new FhinspectionService();
+  @Post('/createFhinspection')
+  async createFhinspection(@Body() fhinspectionVo: FhinspectionVo) {
+    ///核心代码
+    //Post
+    ///Body { "id":"3","name":"154363268@qq.com","password":"123456"}
+    ///Body:  { id: '3', name: '154363268@qq.com', password: '123456'}
+    //返回值{"identifiers": [{	"id": "3"	}],"generatedMaps": [	{}],"raw": []}
+    console.log('Body: ', fhinspectionVo);
+    return await this.fhinspectionService.createFhinspection(fhinspectionVo);
+  }
+  @Put('/updateFhinspection/:Id')
+  async updateaFhinspection(
+    @Headers('userToken') userToken: string,
+    @Param('Id') Id: string,
+    @Body() fhinspectionVo: FhinspectionVo,
+  ) {
+    //请求时主要设置Header:userToken及其值
+    console.log('userToken: ', userToken);
+    console.log('Id: ', Id);
+    console.log('FhinspectionVo: ', fhinspectionVo);
+    let userId = '';
+    if (userToken != null && userToken != '') {
+      userId = userToken;
+    }
+
+    return await this.fhinspectionService.updateaFhinspection(
+      Id,
+      userId,
+      fhinspectionVo,
+    );
+  }
+  @Get('/removeFhinspection/:Id')
+  async removeFhinspection(@Param('Id') Id: string) {
+    return await this.fhinspectionService.removeFhinspection(Id);
+  }
+  @Get('/getFhinspectionById/:Id')
+  async getFhinspectionById(@Param('Id') Id: string) {
+    return await this.fhinspectionService.getFhinspectionById(Id);
+  }
+
+  @Get('/getFhinspection')
+  async getFhinspectionList(@Query() query) {
+    //核心代码测试
+    //fhinspection/getFhinspection?search=1&pageIndex=0&recordIndex=0&pageSize=50
+    ///query:  { search: '1', pageIndex: '0', recordIndex: '0', pageSize: '50' }
+    console.log('query: ', query);
+    const search = new FhinspectionSearchVo();
+    search.search = query.search;
+    search.pageIndex = Number(search.pageIndex != null ? search.pageIndex : 0);
+    search.recordIndex = Number(
+      search.recordIndex != null ? search.recordIndex : 0,
+    );
+    search.pageSize = Number(search.pageSize != null ? search.pageSize : 0);
+
+    console.log('fhok: ', JSON.stringify(search));
+    return await this.fhinspectionService.getFhinspectionList(search);
+  }
+  @Get('/getFhinspectionAll')
+  async getFhinspectionAll() {
+    return await this.fhinspectionService.getFhinspectionAll();
+  }
+  @Get('/getFhinspectionAllView')
+  async getFhinspectionAllView() {
+    return await this.fhinspectionService.getFhinspectionAllView();
+  }
+
+  // @Get('/getFhinspectionSearch')
+  // async getFhinspectionSearch(@Query() search: FhinspectionSearchVo) {
+  //   return await this.fhinspectionService.getFhinspectionSearch(search);
+  // }
+
+}

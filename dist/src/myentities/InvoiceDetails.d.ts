@@ -1,0 +1,33 @@
+export declare class InvoiceDetails {
+    id: string;
+    linkedUotation: string | null;
+    invoiceNumber: string | null;
+    invoiceStatus: string | null;
+    invoiceName: string | null;
+    account: string | null;
+    salesPerson: string | null;
+    clientContact: string | null;
+    currency: string | null;
+    invoiceDate: Date | null;
+    dueDate: Date | null;
+    techName: string | null;
+    trackingNo: string | null;
+    additionalField3: string | null;
+    additionalField4: string | null;
+    remark: string | null;
+    clientNumber: string | null;
+    createdAt: Date | null;
+    updatedAt: Date | null;
+    isactived: string | null;
+    islocked: string | null;
+    createUid: string | null;
+    updatedUid: string | null;
+    tax: string | null;
+    overDate: number | null;
+    isAlert: string | null;
+    totalAmount: number | null;
+    clientPoNumber: string | null;
+    refNumber: string | null;
+    paidAmount: number | null;
+    outstandingAmount: number | null;
+}

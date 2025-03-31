@@ -1,0 +1,24 @@
+{
+    "default":"DbConnectionToken",
+    "type": "postgres",
+    "host": "localhost",
+    "port": 5432,
+    "username": "openerp",
+    "password": "openerp",
+    "database": "crmwf",
+    "synchronize": false,
+    "entities": [
+        "src/entities/*.ts"
+    ],
+    "migrations": [
+       "src/migrations/**/*.ts"
+    ],
+    "subscribers": [
+        "src/repositories/*.ts"
+    ],
+    "cli": {
+       "entitiesDir": "src/entity",
+       "migrationsDir": "src/migrations",
+       "subscribersDir": "src/repositories"
+    }
+ }
