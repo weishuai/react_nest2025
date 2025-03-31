@@ -1,5 +1,5 @@
 
-# 苏州丰禾信息科技有限整理--NEST
+# --NEST
 # 步骤：
 # npm install --save @nestjs/typeorm typeorm postgres
 # npm install pg --save
